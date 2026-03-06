@@ -1,9 +1,10 @@
-import Metalsmith from 'metalsmith'
+import { ok, rejects, strictEqual } from 'node:assert'
+import path from 'node:path'
+import { describe, it } from 'node:test'
 import equal from 'assert-dir-equal'
-import path from 'path'
-import { rejects, strictEqual, ok } from 'node:assert'
-import plugin from '../src/index.js'
-import { handleExtname } from '../src/utils.js'
+import Metalsmith from 'metalsmith'
+import plugin from '../lib/index.js'
+import { handleExtname } from '../lib/utils.js'
 
 function fixture(dir) {
   dir = path.resolve('./test/fixtures', dir)
@@ -30,7 +31,7 @@ function patchDebug() {
       output.push(['error', ...args])
     }
   })
-  return function patchDebug(files, ms) {
+  return function patchDebug(_files, ms) {
     ms.debug = () => Debugger
     ms.metadata({ logs: output })
   }
@@ -196,13 +197,11 @@ describe('@metalsmith/layouts', () => {
 
   it('should return an error for an invalid pattern', async () => {
     const { dir } = fixture('invalid-pattern')
-    rejects(
-      async () => {
-        await Metalsmith(dir)
-          .env('DEBUG', process.env.DEBUG)
-          .use(plugin({ pattern: () => {} }))
-          .build()
-      },
+    await rejects(
+      Metalsmith(dir)
+        .env('DEBUG', process.env.DEBUG)
+        .use(plugin({ transform: 'handlebars', pattern: () => {} }))
+        .build(),
       { message: 'invalid pattern, the pattern option should be a string or array of strings.' }
     )
   })
@@ -265,6 +264,7 @@ describe('@metalsmith/layouts', () => {
       strictEqual(handleExtname('index.njk', options.defaults.extname), 'index.html')
       strictEqual(handleExtname('index.njk', '.htm'), 'index.htm')
     })
+    // biome-ignore lint/suspicious/noTemplateCurlyInString: needed for test title
     it('keeps the extension if options.extname === `.${extension}`', () => {
       strictEqual(handleExtname('index.html', options.defaults.extname), 'index.html')
       strictEqual(handleExtname('index.htm', '.htm'), 'index.htm')
@@ -272,7 +272,7 @@ describe('@metalsmith/layouts', () => {
     it("removes the extension if options.extname === ''", () => {
       strictEqual(handleExtname('index.njk', ''), 'index')
     })
-    it("keeps the extension if options.extname === null|false", () => {
+    it('keeps the extension if options.extname === null|false', () => {
       strictEqual(handleExtname('index.xml', false), 'index.xml')
       strictEqual(handleExtname('index.xml', null), 'index.xml')
     })

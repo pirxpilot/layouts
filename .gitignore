@@ -2,15 +2,6 @@
 node_modules
 npm-debug.log*
 .npm
-*.tgz
-
-# ESLint Cache
-.eslintcache
 
 # tests
-**/build
-coverage
-coverage.info
-
-lib
-!lib/*.d.ts
+test/fixtures/*/build
