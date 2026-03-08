@@ -1,5 +1,5 @@
 {
-  "name": "@metalsmith/layouts",
+  "name": "@pirxpilot/metalsmith-layouts",
   "version": "3.0.0",
   "description": "A metalsmith plugin for layouts",
   "homepage": "https://github.com/metalsmith/layouts#readme",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/metalsmith/layouts.git"
+    "url": "git+https://github.com/pirxpilot/metalsmith-layouts.git"
   },
   "license": "MIT",
   "author": "Ismay Wolff (https://www.wolffsoftwareengineering.nl)",

@@ -1,12 +1,10 @@
-# @metalsmith/layouts
+[![NPM version][npm-image]][npm-url]
+[![Build Status][build-image]][build-url]
+[![Dependency Status][deps-image]][deps-url]
+[![metalsmith: core plugin][metalsmith-badge]][metalsmith-url]
+[![license: MIT][license-badge]][license-url]
 
 A metalsmith plugin for layouts
-
-[![metalsmith: core plugin][metalsmith-badge]][metalsmith-url]
-[![npm: version][npm-badge]][npm-url]
-[![ci: build][ci-badge]][ci-url]
-[![code coverage][codecov-badge]][codecov-url]
-[![license: MIT][license-badge]][license-url]
 
 ## Features
 
@@ -189,13 +187,18 @@ To use this plugin with the Metalsmith CLI, add `@metalsmith/layouts` to the `pl
 
 [MIT](LICENSE)
 
-[npm-badge]: https://img.shields.io/npm/v/@metalsmith/layouts.svg
-[npm-url]: https://www.npmjs.com/package/@metalsmith/layouts
-[ci-badge]: https://app.travis-ci.com/metalsmith/layouts.svg?branch=master
-[ci-url]: https://app.travis-ci.com/github/metalsmith/layouts
+
+[npm-image]: https://img.shields.io/npm/v/@pirxpilot/metalsmith-layouts
+[npm-url]: https://npmjs.org/package/@pirxpilot/metalsmith-layouts
+
+[build-url]: https://github.com/pirxpilot/metalsmith-layouts/actions/workflows/check.yaml
+[build-image]: https://img.shields.io/github/actions/workflow/status/pirxpilot/metalsmith-layouts/check.yaml?branch=main
+
+[deps-image]: https://img.shields.io/librariesio/release/npm/@pirxpilot/metalsmith-layouts
+[deps-url]: https://libraries.io/npm/@pirxpilot%2Fmetalsmith-layouts
+
 [metalsmith-badge]: https://img.shields.io/badge/metalsmith-core_plugin-green.svg?longCache=true
 [metalsmith-url]: https://metalsmith.io
-[codecov-badge]: https://img.shields.io/coveralls/github/metalsmith/layouts
-[codecov-url]: https://coveralls.io/github/metalsmith/layouts
+
 [license-badge]: https://img.shields.io/github/license/metalsmith/layouts
 [license-url]: LICENSE
